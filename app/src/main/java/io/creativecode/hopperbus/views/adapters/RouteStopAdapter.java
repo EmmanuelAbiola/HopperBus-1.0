@@ -1,6 +1,8 @@
 package io.creativecode.hopperbus.views.adapters;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +12,16 @@ import android.widget.TextView;
 
 import io.creativecode.hopperbus.R;
 
-public class RouteAdapter extends BaseAdapter {
+import static android.os.Build.VERSION.SDK_INT;
+import static android.os.Build.VERSION_CODES.JELLY_BEAN;
+
+public class RouteStopAdapter extends BaseAdapter {
 
     private int type;
     private Context mContext;
     private LayoutInflater mInflater;
 
-    public RouteAdapter(Context context, LayoutInflater inflater, int type) {
+    public RouteStopAdapter(Context context, LayoutInflater inflater, int type) {
         this.type = type;
         mContext = context;
         mInflater = inflater;
@@ -27,6 +32,7 @@ public class RouteAdapter extends BaseAdapter {
         return 10;
     }
 
+    @TargetApi(JELLY_BEAN)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -42,6 +48,9 @@ public class RouteAdapter extends BaseAdapter {
             holder.lineView = convertView.findViewById(R.id.line);
             holder.stopNameTextView = (TextView) convertView.findViewById(R.id.text_stop_name);
 
+
+
+
             convertView.setTag(holder);
 
         } else {
@@ -52,11 +61,14 @@ public class RouteAdapter extends BaseAdapter {
 
         // Will refactor into method later
 
-        int sdk = android.os.Build.VERSION.SDK_INT;
-        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+        int sdk = SDK_INT;
+        if(sdk < JELLY_BEAN) {
             holder.circleView.setBackgroundDrawable(mContext.getResources().getDrawable(circleDrawableID));
-        } else {
-            holder.circleView.setBackground(mContext.getResources().getDrawable(circleDrawableID));
+        }
+        else {
+            if (SDK_INT >= JELLY_BEAN) {
+                holder.circleView.setBackground(mContext.getResources().getDrawable(circleDrawableID));
+            }
         }
 
         int lineViewHeightDP = position == 9 ? 35 : 65 ;

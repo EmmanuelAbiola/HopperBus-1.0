@@ -23,7 +23,7 @@ public class RouteStopTimesAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 10;
+        return 5;
     }
 
     @Override

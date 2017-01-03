@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import io.creativecode.hopperbus.R;
-import io.creativecode.hopperbus.views.adapters.RouteAdapter;
+import io.creativecode.hopperbus.views.adapters.RouteStopAdapter;
 import io.creativecode.hopperbus.views.adapters.RouteStopTimesAdapter;
 import io.creativecode.hopperbus.views.widgets.SlidingTabLayout;
 
@@ -98,8 +98,8 @@ public class RouteFragment extends Fragment {
 
             } else {
 
-                RouteAdapter routeAdapter = new RouteAdapter(getActivity(), getActivity().getLayoutInflater(), position);
-                routeStopsListView.setAdapter(routeAdapter);
+                RouteStopAdapter routeStopAdapter = new RouteStopAdapter(getActivity(), getActivity().getLayoutInflater(), position);
+                routeStopsListView.setAdapter(routeStopAdapter);
             }
 
             routeStopsListView.setClickable(true);

@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.TextView;
 
 import io.creativecode.hopperbus.R;
 import io.creativecode.hopperbus.fragments.RouteFragment;
@@ -12,6 +13,7 @@ import io.creativecode.hopperbus.presenters.DataProvider;
 
 
 public class MainActivity extends ActionBarActivity  {
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -24,6 +26,9 @@ public class MainActivity extends ActionBarActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
         configureActionBar();
 
         Log.i("Rfkjfjkfjf", "FaifffhjhfhRRd");
