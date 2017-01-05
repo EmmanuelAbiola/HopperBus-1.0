@@ -28,14 +28,14 @@ public class DataProvider {
             this.json = new JSONObject(jsonString);
             JSONObject o = json.getJSONObject("route903");
             Log.i("Data Provider Route 903", o.toString());
-            RouteViewModel viewModel = new RouteViewModel(o);
+            RouteViewModel viewModel = new RouteViewModel(json);
 
         } catch (JSONException ex) {
             ex.printStackTrace();
             Log.i("Error Parsing", "Error occurred when reading json");
         }
 
-       // RouteViewModel viewModel = new RouteViewModel()
+        // RouteViewModel viewModel = new RouteViewModel()
 
     }
 
@@ -61,6 +61,4 @@ public class DataProvider {
 
         return json;
     }
-
-
 }

@@ -1,17 +1,17 @@
 package io.creativecode.hopperbus.models;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Schedule {
 
-    private ArrayList<Stop> mStops;
+    private List<Stop> mStops;
 
-    public Schedule(ArrayList<Stop> stops) {
+    public Schedule(List<Stop> stops) {
 
         this.mStops = stops;
     }
 
-    public ArrayList<Stop> getStops() {
+    public List<Stop> getStops() {
         return this.mStops;
     }
 }

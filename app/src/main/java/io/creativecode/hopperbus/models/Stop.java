@@ -1,16 +1,56 @@
 package io.creativecode.hopperbus.models;
 
+import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Stop {
 
     private String mID;
     private String mName;
-    private String mTime;
+    private String termTime[];
+    private String weekends[];
+    private String holidays[];
 
-    public Stop(String id, String name, String time) {
+    public Stop(JSONObject obj) {
 
-        this.mID = id;
-        this.mName = name;
-        this.mTime = time;
+        try{
+            mID = obj.getString("id");
+            mName = obj.getString("name");
+
+            if(obj.has("term_time")){
+                JSONArray termTimeJson = obj.getJSONArray("term_time");
+                termTime = new String[termTimeJson.length()];
+
+                for(int i = 0; i < termTime.length; i++){
+                    termTime[i] = termTimeJson.getString(i);
+                }
+            }
+
+            if(obj.has("weekends")){
+                JSONArray weekendsJson = obj.getJSONArray("weekends");
+
+
+                weekends = new String[weekendsJson.length()];
+
+                for(int i = 0; i < weekends.length; i++){
+                    weekends[i] = weekendsJson.getString(i);
+                }
+            }
+
+            if(obj.has("holidays")){
+                JSONArray holidaysJson = obj.getJSONArray("holidays");
+                holidays = new String[holidaysJson.length()];
+
+                for(int i = 0; i < holidays.length; i++){
+                    holidays[i] = holidaysJson.getString(i);
+                }
+            }
+        } catch(JSONException e){
+            e.printStackTrace();
+        }
     }
 
     public String getID() {
@@ -21,7 +61,15 @@ public class Stop {
         return mName;
     }
 
-    public String getTime() {
-        return mTime;
+    public String[] getTermTime(){
+        return termTime;
+    }
+
+    public String[] getWeekends(){
+        return weekends;
+    }
+
+    public String[] getHolidays(){
+        return holidays;
     }
 }
